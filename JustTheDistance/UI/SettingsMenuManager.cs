@@ -96,6 +96,10 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
     [UIComponent("rtSlider")]
     // ReSharper disable once FieldCanBeMadeReadOnly.Local
     private SliderSetting _sliderSetting = null!;
+
+    [UIValue("minRTValue")] [UsedImplicitly] private int SliderMinValue => Config.MinRTSliderValue;
+    [UIValue("maxRTValue")] [UsedImplicitly] private int SliderMaxValue => Config.MaxRTSliderValue;
+    [UIValue("rtIncrements")] [UsedImplicitly] private int SliderIncrements => Config.RTSliderIncrement;
     
     // ReSharper disable once ConvertToPrimaryConstructor
     // (just easier for me to read, sorry)
@@ -125,13 +129,14 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
 
     private void DidActivate(bool firstActivation, bool addedToHierarchy, bool screenSystemEnabling)
     {
-        if (!firstActivation) { return; }
-        
-        // not working
-        /*_sliderSetting.Slider.minValue = Config.MinRTSliderValue;
-        _sliderSetting.Slider.maxValue = Config.MaxRTSliderValue;
-        _sliderSetting.Increments = Config.RTSliderIncrement;
-        _sliderSetting.Slider.Refresh();*/
+        if (firstActivation)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SliderMinValue)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SliderMaxValue)));
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(SliderIncrements)));
+        }
+
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ReactionTime)));
     }
 
     private void UpdateRTSliderText()
