@@ -1,0 +1,18 @@
+<settings-container xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+                    xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'>
+    <toggle-setting text="Mod Enabled"
+                    value="Enabled" bind-value="true" apply-on-change="true"/>
+
+    <horizontal><text text="-----" font-size="2" color="#00000000"/></horizontal>
+    
+    <slider-setting text="Reaction Time" show-buttons="true" formatter="TimeFormatter" id="rtSlider"
+                    value="ReactionTime" integer-only="true" bind-value="true" apply-on-change="true"
+                    min="300" max="1500" increment="10"/>
+
+    <horizontal><text text="-----" font-size="2" color="#00000000"/></horizontal>
+    
+    <toggle-setting text="Beat Snapping"
+                    value="SnapToNearest" bind-value="true" apply-on-change="true"/>
+    <slider-setting text="Snap to Nearest" show-buttons="true" formatter="NoteFormatter" active="~SnapToNearest"
+                    value="SnapToNearestNoteType" integer-only="true" min="1" max="8" increment="1" bind-value="true" apply-on-change="true"/>
+</settings-container>
