@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Threading.Tasks;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components.Settings;
 using BeatSaberMarkupLanguage.GameplaySetup;
@@ -163,11 +164,31 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
         UpdateRTSliderText();
     }
 
-    private void BeatmapDidUpdateContent(StandardLevelDetailViewController arg1, StandardLevelDetailViewController.ContentType contentType)
+    private static async Task<BeatmapLevel> WaitForBeatmapLoaded(StandardLevelDetailViewController standardLevelDetailViewController)
     {
-        _lastTempo = _standardLevelDetailViewController._beatmapLevel.beatsPerMinute;
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ReactionTime)));
-        UpdateRTSliderText();
+        while (standardLevelDetailViewController._beatmapLevel == null)
+        {
+            // this seems... Wrong
+            await Task.Yield();
+        }
+
+        return standardLevelDetailViewController._beatmapLevel;
+    }
+
+    private async void BeatmapDidUpdateContent(StandardLevelDetailViewController arg1, StandardLevelDetailViewController.ContentType contentType)
+    {
+        try
+        {
+            BeatmapLevel beatmapLevel = await WaitForBeatmapLoaded(_standardLevelDetailViewController);
+            _lastTempo = beatmapLevel.beatsPerMinute;
+        
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(ReactionTime)));
+            UpdateRTSliderText();
+        }
+        catch (Exception e)
+        {
+            Plugin.Log.Error(e);
+        }
     }
 
     protected bool Enabled
