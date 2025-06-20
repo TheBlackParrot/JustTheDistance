@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using BeatSaberMarkupLanguage;
 using BeatSaberMarkupLanguage.Attributes;
 using BeatSaberMarkupLanguage.Components.Settings;
-using BeatSaberMarkupLanguage.GameplaySetup;
 using JetBrains.Annotations;
 using JustTheDistance.Configuration;
 using TMPro;
@@ -224,7 +223,6 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
     private static PluginConfig Config => PluginConfig.Instance;
     
     public event PropertyChangedEventHandler? PropertyChanged;
-    private readonly GameplaySetup _gameplaySetup;
 
     private const string MenuName = nameof(JustTheDistance);
     private const string ResourcePath = nameof(JustTheDistance) + ".UI.BSML.Settings.bsml";
@@ -237,7 +235,7 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
             1 => "Whole",
             2 => "Half",
             3 => "Third",
-            4 => "Quarter",
+            4 => "Fourth",
             5 => "Fifth",
             6 => "Sixth",
             7 => "Seventh",
@@ -246,21 +244,15 @@ internal class ModSettingsManager : IInitializable, IDisposable, INotifyProperty
         };
     }
     
-    // ReSharper disable once ConvertToPrimaryConstructor
-    public ModSettingsManager(GameplaySetup gameplaySetup)
-    {
-        _gameplaySetup = gameplaySetup;
-    }
-    
     public void Initialize()
     {
-        _gameplaySetup.AddTab(MenuName, ResourcePath, this);
+        BeatSaberMarkupLanguage.Settings.BSMLSettings.Instance.AddSettingsMenu(MenuName, ResourcePath, this);
         Plugin.Log.Info("Initialized settings tab");
     }
 
     public void Dispose()
     {
-        _gameplaySetup.RemoveTab(MenuName);
+        BeatSaberMarkupLanguage.Settings.BSMLSettings.Instance?.RemoveSettingsMenu(this);
     }
     
     protected bool SnapToNearest

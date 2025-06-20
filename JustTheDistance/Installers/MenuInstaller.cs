@@ -9,7 +9,7 @@ internal class MenuInstaller : Installer
 {
     public override void InstallBindings()
     {
-        Container.BindInterfacesAndSelfTo<ModSettingsManager>().AsSingle();
+        Container.BindInterfacesTo<ModSettingsManager>().AsSingle();
         Container.BindInterfacesTo<ReactionTimeSlider>().AsSingle();
     }
 }

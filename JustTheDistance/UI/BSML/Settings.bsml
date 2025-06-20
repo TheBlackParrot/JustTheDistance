@@ -1,7 +1,7 @@
 <settings-container xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
                     xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'>
-    <toggle-setting text="Beat Snapping"
+    <toggle-setting text="NJV Snapping"
                     value="SnapToNearest" bind-value="true" apply-on-change="true"/>
-    <slider-setting text="Snap to Nearest" show-buttons="true" formatter="NoteFormatter" active="~SnapToNearest"
+    <slider-setting text="Snap NJV to Nearest" show-buttons="true" formatter="NoteFormatter" active="~SnapToNearest"
                     value="SnapToNearestNoteType" integer-only="true" min="1" max="8" increment="1" bind-value="true" apply-on-change="true"/>
 </settings-container>
