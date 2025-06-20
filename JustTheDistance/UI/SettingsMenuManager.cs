@@ -72,11 +72,8 @@ internal class ReactionTimeSlider : IInitializable, IDisposable, INotifyProperty
     [UsedImplicitly]
     private static string TimeFormatter(int x)
     {
-        string mainStr = Config.SnapToNearest
-            ? $"{(_snappedRT >= 1000 ? (_snappedRT / 1000f).ToString("F2") + "s" : _snappedRT.ToString("N0") + "ms")}"
-            : $"{(x >= 1000 ? (x / 1000f).ToString("F2") + "s" : x.ToString("N0") + "ms")}";
-        
-        return $"{mainStr}";   
+        int value = Config.SnapToNearest ? _snappedRT : x;
+        return $"{(value >= 1000 ? (value / 1000f).ToString("F2") + "s" : value.ToString("N0") + "ms")}";
     }
     
     // ReSharper disable FieldCanBeMadeReadOnly.Local
@@ -200,6 +197,8 @@ internal class ReactionTimeSlider : IInitializable, IDisposable, INotifyProperty
         {
             Config.Enabled = value;
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Enabled)));
+            
+            _sliderSetting.Interactable = value;
         }
     }
     
