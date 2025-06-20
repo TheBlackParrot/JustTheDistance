@@ -7,7 +7,6 @@
                     ignore-layout="true" anchor-pos-x="-22" anchor-pos-y="-0.5"/>
     
     <toggle-setting text="Mod Enabled" id="enableToggle"
-                    hover-hint="Set JD/RT"
                     preferred-width="0" ignore-layout="true" anchor-pos-y="3"
                     value="Enabled" bind-value="true" apply-on-change="true"/>
 </horizontal>
