@@ -114,6 +114,7 @@
 
     <ItemGroup>
       <EmbeddedResource Include="UI\BSML\Settings.bsml" />
+        <EmbeddedResource Include="UI\BSML\ReactionTimeSlider.bsml" />
     </ItemGroup>
 
 </Project>

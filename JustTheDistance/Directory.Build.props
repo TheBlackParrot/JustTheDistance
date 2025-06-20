@@ -7,7 +7,7 @@
     <PluginId>JustTheDistance</PluginId>
     <PluginName>JustTheDistance</PluginName>
     <Authors>TheBlackParrot</Authors>
-    <Version>0.0.2</Version>
+    <Version>0.1.0</Version>
     <GameVersion>1.40.6</GameVersion>
     <Description>Simple jump distance/reaction time changer</Description>
     <ProjectSource>https://github.com/TheBlackParrot/JustTheDistance</ProjectSource>

@@ -1,0 +1,13 @@
+<horizontal xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='https://monkeymanboy.github.io/BSML-Docs/BSMLSchema.xsd'
+            local-scale="0.67 0.67 0.67" anchor-pos-y="-38" anchor-pos-x="15"
+            child-control-width="true" child-align="MiddleLeft">
+    <slider-setting text="Reaction Time" show-buttons="true" formatter="TimeFormatter" id="rtSlider"
+                    value="ReactionTime" integer-only="true" bind-value="true" apply-on-change="true"
+                    min="~minRTValue" max="~maxRTValue" increment="~rtIncrements"
+                    ignore-layout="true" anchor-pos-x="-22" anchor-pos-y="-0.5"/>
+    
+    <toggle-setting text="Mod Enabled" id="enableToggle"
+                    hover-hint="Set JD/RT"
+                    preferred-width="0" ignore-layout="true" anchor-pos-y="3"
+                    value="Enabled" bind-value="true" apply-on-change="true"/>
+</horizontal>
