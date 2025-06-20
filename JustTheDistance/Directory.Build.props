@@ -7,29 +7,25 @@
     <PluginId>JustTheDistance</PluginId>
     <PluginName>JustTheDistance</PluginName>
     <Authors>TheBlackParrot</Authors>
-    <Version>0.0.1</Version>
-    <GameVersion>1.40.3</GameVersion>
+    <Version>0.0.2</Version>
+    <GameVersion>1.40.6</GameVersion>
     <Description>Simple jump distance/reaction time changer</Description>
-    <!--<PluginIcon></PluginIcon>-->
-    <!--<ProjectSource></ProjectSource>-->
-    <!--<ProjectHome></ProjectHome>-->
-    <!--<DonateUrl></DonateUrl>-->
+    <ProjectSource>https://github.com/TheBlackParrot/JustTheDistance</ProjectSource>
+    <ProjectHome>https://github.com/TheBlackParrot/JustTheDistance</ProjectHome>
+    <DonateUrl>https://ko-fi.com/septilateral</DonateUrl>
   </PropertyGroup>
 
   <!-- Plugin Dependencies -->
   <ItemGroup>
-    <DependsOn Include="BSIPA" Version="^4.3.0"/>
-    <DependsOn Include="BeatSaberMarkupLanguage" Version="^1.12.0"/>
-    <DependsOn Include="SiraUtil" Version="^3.1.0"/>
+    <DependsOn Include="BSIPA" Version="^4.3.5"/>
+    <DependsOn Include="BeatSaberMarkupLanguage" Version="^1.12.5"/>
+    <DependsOn Include="SiraUtil" Version="^3.1.14"/>
   </ItemGroup>
   
   <PropertyGroup>
     <BSMTProjectType>BSIPA</BSMTProjectType>
     <GenerateManifest>true</GenerateManifest>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)' != 'Release'">
-    <DisableZipRelease>true</DisableZipRelease>
+    <DisableZipRelease>false</DisableZipRelease>
   </PropertyGroup>
   
 </Project>
